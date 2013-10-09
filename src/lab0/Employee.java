@@ -47,6 +47,9 @@ public class Employee {
     }
 
     public void setDaysVacation(int daysVacation) {
+        if(daysVacation < 0 || daysVacation > MAX_VACATION_DAYS){
+            throw new IllegalArgumentException("Illegal days vacation.");
+        }
         this.daysVacation = daysVacation;
     }
 
@@ -55,6 +58,9 @@ public class Employee {
     }
 
     public void setFirstName(String firstName) {
+        if(firstName == null){
+            throw new IllegalArgumentException("Illegal first name.");
+        }
         this.firstName = firstName;
     }
 
@@ -63,6 +69,9 @@ public class Employee {
     }
 
     public void setHireDate(Date hireDate) {
+        if(hireDate == null){
+            throw new IllegalArgumentException("Illegal hire date.");
+        }
         this.hireDate = hireDate;
     }
 
@@ -71,6 +80,9 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
+        if(lastName == null){
+            throw new IllegalArgumentException("Illegal last name.");
+        }
         this.lastName = lastName;
     }
 
@@ -79,6 +91,9 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
+        if(ssn == null){
+            throw new IllegalArgumentException("Illegal social security number.");
+        }
         this.ssn = ssn;
     }
     
