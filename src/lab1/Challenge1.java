@@ -21,14 +21,41 @@ public class Challenge1 {
     public static void main(String[] args) {
         Challenge1 app = new Challenge1();
         
+        try{
         String fullName = JOptionPane.showInputDialog("Enter full name:");
         String lastName = app.extractLastName(fullName);
         String msg = "Your last name is: " + lastName;
         JOptionPane.showMessageDialog(null, msg);
+        }
+        catch(NullPointerException npe){
+            JOptionPane.showMessageDialog(null, "No input detected; please try again.");
+            app.newInput(app);
+        }
+        catch(IllegalArgumentException iae){
+            JOptionPane.showMessageDialog(null, "Illegal input; please try again.");
+            app.newInput(app);
+        }
+        
     }
     
-    public String extractLastName(String fullName) {
+    private void newInput(Challenge1 c){
+        String fullName = JOptionPane.showInputDialog("Enter full name:");
+        String lastName = c.extractLastName(fullName);
+        String msg = "Your last name is: " + lastName;
+        JOptionPane.showMessageDialog(null, msg);
+    }
+    
+    public String extractLastName(String fullName) throws NullPointerException,
+            IllegalArgumentException{
+        if(fullName.equals("")){
+            throw new NullPointerException();
+        }
+        
         String[] nameParts = fullName.split(" ");
+        if(nameParts.length < 2){
+            throw new IllegalArgumentException();
+        }
+        
         return nameParts[LAST_NAME_IDX];
     }
 
