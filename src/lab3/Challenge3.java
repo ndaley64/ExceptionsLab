@@ -13,7 +13,12 @@ public class Challenge3 {
 
     public static void main(String[] args) {
         
+        try{
         new InputOutputGui().startConversation();
+    
+        }catch(Exception e){
+            System.err.println("Exception thrown.");
+        }
     }
     
 }
